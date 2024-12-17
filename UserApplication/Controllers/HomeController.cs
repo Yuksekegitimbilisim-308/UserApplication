@@ -1,10 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using UserApplication.Models;
 using UserApplication.Service.Abstract;
 
 namespace UserApplication.Controllers
 {
+    [Authorize(Roles ="admin")]
     public class HomeController : Controller
     {
         private readonly IUserService _userService;
@@ -13,9 +13,21 @@ namespace UserApplication.Controllers
         {
             _userService = userService;
         }
+        [Authorize(Roles ="admin,standart")]
         public async Task<IActionResult> Index()
         {
-            var isLogin = await _userService.Login("melihok_", "1234");
+            return View();
+        }
+        [HttpGet]
+        [Authorize(Roles ="admin")]
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Test()
+        {
             return View();
         }
     }

@@ -1,0 +1,16 @@
+﻿@using UserApplication.Entity
+@model User
+
+
+<div class="card-header">
+    <span>@Model.Username Kullanıcı Bilgileri</span>
+    <div class="card-body">
+        <div>
+            <label for="username">Kullanıcı Adı</label>
+            <input asp-for="Username" class="form-control" />
+            <label for="secretKey">Güvenlik Anahtarı</label>
+            <input asp-for="SecretKey" class="form-control" />
+        </div>
+        <button class="btn btn-lg btn-warning" >Güncelle</button>
+    </div>
+</div>

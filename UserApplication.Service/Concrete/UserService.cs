@@ -25,5 +25,15 @@ namespace UserApplication.Service.Concrete
 
             return false;
         }
+        public async Task<User> GetById(string username)
+        {
+            var query =  _userRepo.GetQueryable();
+           return query.FirstOrDefault(x => x.Username == username);
+        }
+        public async Task<User> GetById(int id)
+        {
+            var query = _userRepo.GetQueryable();
+            return query.FirstOrDefault(x => x.Id == id);
+        }
     }
 }

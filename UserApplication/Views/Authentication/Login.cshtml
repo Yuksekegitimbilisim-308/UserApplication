@@ -1,0 +1,34 @@
+﻿@using UserApplication.Models.RequestParameters.Auth
+@model LoginRequestParameter
+@{
+    Layout = "";
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<div class="card container mt-5">
+    <div class="card-header">
+        <h2>Giriş Yap!</h2>
+    </div>
+    <div class="card-body">
+        <form method="post" asp-controller="Authentication" asp-action="Login">
+            <div>
+                <label for="username">Kullanıcı Adı</label>
+                <input asp-for="Username" id="username" class="form-control" type="text" placeholder="Kullanıcı Adınız..." autocomplete="off" />
+            </div>
+            <div>
+                <label for="password">Parola</label>
+                <input asp-for="Password" id="password" class="form-control" type="password" placeholder="Parolanız..." autocomplete="off" />
+            </div>
+            <button class="btn btn-lg btn-primary mt-3" type="submit"> Giriş Yap</button>
+            @if (ViewBag.LoginError != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <p>@ViewBag.LoginError</p>
+                </div>
+            }
+
+        </form>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

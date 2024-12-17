@@ -1,14 +1,30 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Net;
 using UserApplication.Repository;
 using UserApplication.Service;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
+//Session
+//Cookie 
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddRepository(builder.Configuration);
 builder.Services.AddService();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,opt =>
+    {
+        opt.Cookie.Name = "UserApplication";
+        opt.LoginPath = "/Authentication/Login";
+        opt.LogoutPath = "/Authentication/Login";
+        opt.AccessDeniedPath = "/Error/AccessDenied";
+    });
+
+
 
 var app = builder.Build();
 
@@ -16,7 +32,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -25,7 +40,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseAuthentication();//Kimlik Kontrolü
+app.UseAuthorization();//Yetki Kontrolü
 
 app.MapControllerRoute(
     name: "default",
