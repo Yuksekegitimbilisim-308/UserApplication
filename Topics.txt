@@ -1,0 +1,31 @@
+OOP
+SOLID Prensipleri
+
+Asp.Net Core (Kestrel Web Server Embedded) IIS
+-EntityFramework,Dapper
+-IQueryable
+-Linq
+-DesignPattern
+-Web Server nedir ? Application Server
+-AppSettings.json (Environemnt - Development,Test,Production)
+-Middleware
+-ActionFilter
+-Authentication (Kimlik Doğrulama)
+-Authorization (Kimlikten Sonra Rol Doğrulama)
+-Cache (InMemoryCache, Redis,Kibana)
+-Logging (NLog,SeriLog)
+
+Web Api(Rest Api) - Web Application (MVC)
+--Model kavramı nedir. Neden kullanılır.
+--ViewModel DTO Nedir Farkları Nedir.
+
+Rest api (Json veri tipi ile çalışır. Json,xml,csv) HTTP Request - HTTP Response
+-JWT(Json Web Token)
+
+-Cors Policy
+--DI 
+---Scoped => Her Request için yeni bir referans oluşur.
+---Singleton => Nesne ilk talep edildiğinde ram'de referans bir kere oluşur. Ve uygulama Çalıştığı sürece 1 kere oluşturulur.
+---Transient => İstek içerisinde ne kadar talep edilirse okadar referans oluşturulur.
+
+Web Services (Xml veri tipi çalışır.)
