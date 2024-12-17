@@ -30,5 +30,11 @@ namespace UserApplication.Controllers
         {
             return View();
         }
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Test()
+        {
+            return View();
+        }
     }
 }
